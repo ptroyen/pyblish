@@ -1,7 +1,31 @@
 # -*- coding: utf-8 -*-
+############################ IMPORT LIKE THIS #################################
+# import sys
+# sys.path.append('PATH to directory where publish.py is located')
+# import publish
+###############################################################################
+
+
 import matplotlib as mpl
 import matplotlib.pyplot as plt
+from cycler import cycler
+
 #-----------------------------------------------------------------------------
+plt.style.use('default')
+
+# ### Set Black And white
+# monochrome = (cycler('color', ['k']) * cycler('marker', ['', '.','o','^']) *
+#               cycler('linestyle', ['-', '--', ':', '-.']))
+# plt.rc('axes', prop_cycle=monochrome)
+# mpl.rcParams['axes.prop_cycle'] = monochrome
+
+## CHECK THESE HEX COLOR SCHEMES
+colors = ['#e6194B', '#3cb44b', '#ffe119', '#4363d8', '#f58231',
+ '#42d4f4', '#f032e6', '#fabed4', '#469990', '#dcbeff', '#9A6324',
+  '#fffac8', '#800000', '#aaffc3', '#000075', '#a9a9a9', '#ffffff', '#000000']
+
+
+
 
 ## Set Defaults For Plotting Here
 # Available Styles : ['default','Solarize_Light2', '_classic_test_patch', 'bmh', 'classic', 'dark_background',
@@ -9,16 +33,16 @@ import matplotlib.pyplot as plt
 #  'seaborn-dark', 'seaborn-dark-palette', 'seaborn-darkgrid', 'seaborn-deep', 'seaborn-muted',
 #  'seaborn-notebook', 'seaborn-paper', 'seaborn-pastel', 'seaborn-poster', 'seaborn-talk',
 #  'seaborn-ticks', 'seaborn-white', 'seaborn-whitegrid', 'tableau-colorblind10']
-plt.style.use('default')
+
 
 ## For Lines
-mpl.rcParams['lines.linewidth'] = 1.5 # sets linedwidth
-mpl.rcParams['lines.markersize'] = 5 # sets marker-size on lines
+mpl.rcParams['lines.linewidth'] = 2 # sets linedwidth
+mpl.rcParams['lines.markersize'] = 4 # sets marker-size on lines
 
 # Figure Size Definition
 fig_size = plt.rcParams["figure.figsize"]
 fig_size[0] = 6                         # size for x
-fig_size[1] = fig_size[0]/1.5         # size for y
+fig_size[1] = fig_size[0]/1.3         # size for y
 plt.rcParams["figure.figsize"] = fig_size
 
 
@@ -28,21 +52,33 @@ plt.rcParams["figure.figsize"] = fig_size
 ##     - 'cursive' (e.g., Zapf-Chancery),
 ##     - 'fantasy' (e.g., Western), and
 ##     - 'monospace' (e.g., Courier).
-plt.rcParams["font.family"] = "serif" 
+# plt.rcParams["font.family"] = "serif" 
+
+plt.rcParams.update({
+     "text.usetex": 1,
+     "font.family": "serif",
+     "font.sans-serif": ["Helvetica"]})
+
+# plt.rcParams.update({
+#     "text.usetex": False,
+#     "font.family": "serif",
+#     "font.sans-serif": ["Helvetica"]})    
+
 ## plt.rc('font', family='serif', serif='Times')
 
 # Font Sizes to use
 SMALLER = 9
 SMALL_SIZE = 10
 MEDIUM_SIZE = 12
+MEDIUM_SIZE_a = 14
 BIGGER_SIZE = 14
 
 plt.rc('font', size=SMALL_SIZE)          # controls default text sizes
 plt.rc('axes', titlesize=MEDIUM_SIZE)    # fontsize of the axes title
-plt.rc('axes', labelsize=MEDIUM_SIZE)    # fontsize of the x and y labels
+plt.rc('axes', labelsize=BIGGER_SIZE)    # fontsize of the x and y labels
 plt.rc('xtick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
 plt.rc('ytick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
-plt.rc('legend', fontsize=SMALLER)       # legend fontsize
+plt.rc('legend', fontsize=MEDIUM_SIZE)       # legend fontsize
 plt.rc('figure', titlesize=BIGGER_SIZE)  # fontsize of the figure title
 
 
