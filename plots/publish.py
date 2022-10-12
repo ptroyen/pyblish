@@ -11,21 +11,25 @@ import matplotlib.pyplot as plt
 from cycler import cycler
 
 #-----------------------------------------------------------------------------
-plt.style.use('default')
+# plt.style.use('seaborn-ticks')
 
-# ### Set Black And white
+# plt.style.use('fast')
+
+### Set Black And white
 # monochrome = (cycler('color', ['k']) * cycler('marker', ['', '.','o','^']) *
 #               cycler('linestyle', ['-', '--', ':', '-.']))
 # plt.rc('axes', prop_cycle=monochrome)
 # mpl.rcParams['axes.prop_cycle'] = monochrome
+#### , (0, (3, 5, 1, 5, 1, 5))
 
-## CHECK THESE HEX COLOR SCHEMES
-colors = ['#e6194B', '#3cb44b', '#ffe119', '#4363d8', '#f58231',
- '#42d4f4', '#f032e6', '#fabed4', '#469990', '#dcbeff', '#9A6324',
-  '#fffac8', '#800000', '#aaffc3', '#000075', '#a9a9a9', '#ffffff', '#000000']
-
+# Set the value for markevery
+markEvery = 0.1
 
 
+monochrome = (cycler('color', ['k'])* cycler('markevery',[markEvery])* cycler('marker', ['','o','^','s','v']) *
+              cycler('linestyle', ['-', '--', ':', (0,(5,2,5,5,1,4))] ))
+plt.rc('axes', prop_cycle=monochrome)
+mpl.rcParams['axes.prop_cycle'] = monochrome
 
 ## Set Defaults For Plotting Here
 # Available Styles : ['default','Solarize_Light2', '_classic_test_patch', 'bmh', 'classic', 'dark_background',
@@ -36,7 +40,7 @@ colors = ['#e6194B', '#3cb44b', '#ffe119', '#4363d8', '#f58231',
 
 
 ## For Lines
-mpl.rcParams['lines.linewidth'] = 2 # sets linedwidth
+mpl.rcParams['lines.linewidth'] = 1.25 # sets linedwidth
 mpl.rcParams['lines.markersize'] = 4 # sets marker-size on lines
 
 # Figure Size Definition
@@ -68,14 +72,14 @@ plt.rcParams.update({
 
 # Font Sizes to use
 SMALLER = 9
-SMALL_SIZE = 10
-MEDIUM_SIZE = 12
-MEDIUM_SIZE_a = 14
-BIGGER_SIZE = 14
+SMALL_SIZE = 12
+MEDIUM_SIZE = 14
+MEDIUM_SIZE_a = 16
+BIGGER_SIZE = 18
 
 plt.rc('font', size=SMALL_SIZE)          # controls default text sizes
 plt.rc('axes', titlesize=MEDIUM_SIZE)    # fontsize of the axes title
-plt.rc('axes', labelsize=BIGGER_SIZE)    # fontsize of the x and y labels
+plt.rc('axes', labelsize=MEDIUM_SIZE)    # fontsize of the x and y labels
 plt.rc('xtick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
 plt.rc('ytick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
 plt.rc('legend', fontsize=MEDIUM_SIZE)       # legend fontsize
@@ -84,6 +88,15 @@ plt.rc('figure', titlesize=BIGGER_SIZE)  # fontsize of the figure title
 
 # Put frame around legend 
 plt.rcParams['legend.frameon'] = False
+
+# HandleLength in Legend
+plt.rcParams['legend.handlelength'] = 2.0
+
+# Default Marker size
+plt.rcParams['lines.markersize'] = 5
+
+# Default Markevery 
+# plt.rcParams['lines.markevery'] = 0.05
 
 #-----------------------------------------------------------------------------
 ##%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
